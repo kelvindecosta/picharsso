@@ -17,3 +17,20 @@ def resize(image, scale):
     w = int(round(w * scale * 1.75))
 
     return cv.resize(image, (w, h))
+
+
+# Convert image to ascii text
+def image_to_ascii(image):
+    # Set of ascii characters
+    charset = " .,:;irsXA253hMHGS#9b&@"
+    result = ""
+
+    # Normalizing image from range(0, 255) to (0, max index of charset)
+    image = cv.normalize(image, None, 0, len(charset) - 1, cv.NORM_MINMAX)
+
+    for row in image:
+        for pixel in row:
+            result += charset[pixel]
+        result += "\n"
+
+    return result
