@@ -21,7 +21,7 @@ def resize(image, scale):
 
 
 # Convert grayscale image to ascii text
-def gs_image_to_ascii(image):
+def gs_image_to_ascii(image, negative=False):
     # Set of ascii characters
     charset = " .,:;irsXA253hMHGS#9b&@"
     result = ""
@@ -31,18 +31,23 @@ def gs_image_to_ascii(image):
 
     for row in image:
         for pixel in row:
-            result += charset[pixel]
+            result += charset[pixel] if not negative else charset[len(charset) - 1 - pixel]
         result += "\n"
 
     return result
 
-
+# Parsing Arguments
 def get_argparser():
     parser = argparse.ArgumentParser(description="Convert an Image to ASCII Art", prog="python converter.py")
     parser.add_argument("image_path", type=str, help="Path to Image File")
-    parser.add_argument("-s", "--scale", type=float, help="Scale Factor", default=0.150, metavar="")
-    parser.add_argument("-o", "--output", type=str, help="Path to Output File", metavar="")
-    parser.add_argument("-v", "--verbose", action="store_true", help="Print Verbose")
+
+    parser.add_argument("-o", "--output", type=str, help="Path to Output File", metavar="")                     # Write to a file
+    parser.add_argument("-v", "--verbose", action="store_true", help="Print Verbose")                           # Print stats
+    parser.add_argument("-n", "--negative", action="store_true", help="Reverse Gray Scale", default=False)      # Negative
+
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("-s", "--scale", type=float, help="Scale Factor", default=0.15, metavar="")              # Reshape with scale
+    group.add_argument("-w", "--width", type=int, help="New Width", metavar="")                                 # Reshape with width
 
     return parser
 
@@ -64,8 +69,14 @@ if __name__ == '__main__':
         if scale <= 0:
             raise ValueError("Scale is invalid!")
 
+        width = args.width
+        if width:
+            if width <= 0:
+                raise ValueError("Width is invalid!")
+            scale = width / (image.shape[1] * 1.75)
+
         image = resize(image, scale)
-        text = gs_image_to_ascii(image)
+        text = gs_image_to_ascii(image, args.negative)
 
         output = args.output
         if output:
@@ -75,6 +86,7 @@ if __name__ == '__main__':
         if args.verbose:
             for data in ["image_path", "scale", "output"]:
                 print("{:10} : {}".format(data, eval(data)))
+            print("{:10} : {}".format("Dimensions", str(image.shape)))
             print("\n")
         print("ASCII IMAGE\n")
         print(text)
