@@ -23,7 +23,8 @@ def resize(image, scale):
 # Convert grayscale image to ascii text
 def gs_image_to_ascii(image, negative=False):
     # Set of ascii characters
-    charset = " .,:;irsXA253hMHGS#9b&@"
+    # charset = " .,:;irsXA253hMHGS#9b&@"
+    charset = " :!?PG@"
     result = ""
 
     # Normalizing image from range(0, 255) to (0, max index of charset)
