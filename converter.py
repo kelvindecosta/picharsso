@@ -1,7 +1,7 @@
 import argparse
 import cv2 as cv
 import numpy as np
-from sty import fg
+from sty import fg, bg
 from os.path import exists, isfile
 
 
@@ -21,6 +21,7 @@ def resize(image, scale):
 def image_to_ascii(image, color):
     # Set of ascii characters
     charset = " :!?PG@"
+    charset = " .,:;irsXA253hMHGS#9b&@" 
     result = ""
 
     gray = cv.cvtColor(image, cv.COLOR_RGB2GRAY)
@@ -40,6 +41,40 @@ def image_to_ascii(image, color):
         result += "\n"
     return result
 
+
+def braille_from_sub(sub):
+    pattern = {
+        (0, 0) : 0x01, (0, 1) : 0x08,
+        (1, 0) : 0x02, (1, 1) : 0x10,
+        (2, 0) : 0x04, (2, 1) : 0x20,
+        (3, 0) : 0x40, (3, 1) : 0x80
+    }
+
+    flag = 0x0
+    for i in range(sub.shape[0]):
+        for j in range(sub.shape[1]):
+            px = sub[i, j]
+            if px >= 64:
+                flag = flag | pattern.get((i, j))
+    return chr(ord('\u2800') + flag)
+
+
+def image_to_braille(image, color):
+    gray = cv.cvtColor(image, cv.COLOR_RGB2GRAY)
+    result = ""
+    for i in range(0, gray.shape[0], 4):
+        for j in range(0, gray.shape[1], 2):
+            if color:
+                nc = np.mean(np.mean(image[i:i+4, j:j+2], axis=0), axis=0)
+                nc = np.vectorize(int)(nc)
+                result += f"{fg(nc[0], nc[1], nc[2])}{braille_from_sub(gray[i:i+4, j:j+2])}{fg.rs}"
+            else:
+                result += braille_from_sub(gray[i:i+4, j:j+2])
+        result += "\n"
+
+    return result
+
+
 # Parsing Arguments
 def get_argparser():
     parser = argparse.ArgumentParser(description="Convert an Image to ASCII Art", prog="python converter.py")
@@ -48,6 +83,7 @@ def get_argparser():
     parser.add_argument("-o", "--output", type=str, help="Path to Output File", metavar="")                     # Write to a file
     parser.add_argument("-v", "--verbose", action="store_true", help="Print Verbose")                           # Print stats
     parser.add_argument("-c", "--color", action="store_true", help="Color", default=False)                      # Color
+    parser.add_argument("-b", "--braille", action="store_true", help="Braille", default=False)                  # Braille
 
     group = parser.add_mutually_exclusive_group()
     group.add_argument("-s", "--scale", type=float, help="Scale Factor", default=0.15, metavar="")              # Reshape with scale
@@ -79,12 +115,17 @@ def main():
         if width:
             if width <= 0:
                 raise ValueError("Width is invalid!")
+            if args.braille:
+                width *= 2
             scale = width / (image.shape[1] * 1.75)
         
         image = resize(image, scale)
         image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
 
-        text = image_to_ascii(image, args.color)
+        if not args.braille:
+            text = image_to_ascii(image, args.color)
+        else:
+            text = image_to_braille(image, args.color)
         print(text)
 
     except Exception as e:
