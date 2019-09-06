@@ -1,17 +1,14 @@
 import argparse
-import os
 import cv2 as cv
-
-
-# Open file as grayscale image
-def gray_scale(path):
-    image = cv.imread(path, cv.IMREAD_GRAYSCALE)
-    return image
+import numpy as np
+from sty import fg
+from os.path import exists, isfile
 
 
 # Resize image
 def resize(image, scale):
-    h, w = image.shape
+    h = image.shape[0]
+    w = image.shape[1]
 
     # Scale width further by 1.75 to normalize aspect ratio of a text character
     h = int(round(h * scale))
@@ -21,20 +18,26 @@ def resize(image, scale):
 
 
 # Convert grayscale image to ascii text
-def gs_image_to_ascii(image, negative=False):
+def image_to_ascii(image, color):
     # Set of ascii characters
-    # charset = " .,:;irsXA253hMHGS#9b&@"
     charset = " :!?PG@"
     result = ""
 
+    gray = cv.cvtColor(image, cv.COLOR_RGB2GRAY)
     # Normalizing image from range(0, 255) to (0, max index of charset)
-    image = cv.normalize(image, None, 0, len(charset) - 1, cv.NORM_MINMAX)
+    gray = cv.normalize(gray, None, 0, len(charset) - 1, cv.NORM_MINMAX)
 
-    for row in image:
-        for pixel in row:
-            result += charset[pixel] if not negative else charset[len(charset) - 1 - pixel]
+    asciify = np.vectorize(lambda x: charset[x])
+    text = asciify(gray)
+
+    for i in range(text.shape[0]):
+        for j in range(text.shape[1]):
+            if color:
+                pc = image[i, j]
+                result += f"{fg(pc[0], pc[1], pc[2])}{text[i, j]}{fg.rs}"
+            else:
+                result += text[i, j]
         result += "\n"
-
     return result
 
 # Parsing Arguments
@@ -44,7 +47,7 @@ def get_argparser():
 
     parser.add_argument("-o", "--output", type=str, help="Path to Output File", metavar="")                     # Write to a file
     parser.add_argument("-v", "--verbose", action="store_true", help="Print Verbose")                           # Print stats
-    parser.add_argument("-n", "--negative", action="store_true", help="Reverse Gray Scale", default=False)      # Negative
+    parser.add_argument("-c", "--color", action="store_true", help="Color", default=False)                      # Color
 
     group = parser.add_mutually_exclusive_group()
     group.add_argument("-s", "--scale", type=float, help="Scale Factor", default=0.15, metavar="")              # Reshape with scale
@@ -53,16 +56,18 @@ def get_argparser():
     return parser
 
 
-if __name__ == '__main__':
+def main():
     parser = get_argparser()
     args = parser.parse_args()
 
     try:
+        # Validate file
         image_path = args.image_path
-        if not os.path.exists(image_path) or not os.path.isfile(image_path):
+        if not (exists(image_path) and isfile(image_path)):
             raise FileNotFoundError("File does not exist!")
-
-        image = gray_scale(image_path)
+    
+        # Load image
+        image = cv.imread(image_path)
         if image is None:
             raise ValueError("File is not an image!")
 
@@ -75,21 +80,15 @@ if __name__ == '__main__':
             if width <= 0:
                 raise ValueError("Width is invalid!")
             scale = width / (image.shape[1] * 1.75)
-
+        
         image = resize(image, scale)
-        text = gs_image_to_ascii(image, args.negative)
+        image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
 
-        output = args.output
-        if output:
-            with open(output, "w+") as f:
-                f.write(text)
-
-        if args.verbose:
-            for data in ["image_path", "scale", "output"]:
-                print("{:10} : {}".format(data, eval(data)))
-            print("{:10} : {}".format("Dimensions", str(image.shape)))
-            print("\n")
-        print("ASCII IMAGE\n")
+        text = image_to_ascii(image, args.color)
         print(text)
+
     except Exception as e:
         print(e)
+
+if __name__ == "__main__":
+    main()
