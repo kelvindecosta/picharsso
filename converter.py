@@ -6,13 +6,16 @@ from os.path import exists, isfile
 
 
 # Resize image
-def resize(image, scale):
+def resize(image, scale, b=False):
     h = image.shape[0]
     w = image.shape[1]
 
-    # Scale width further by 1.75 to normalize aspect ratio of a text character
-    h = int(round(h * scale))
-    w = int(round(w * scale * 1.75))
+    if not b:
+        h = int(round(h * scale / 1.75))
+        w = int(round(w * scale))
+    else:
+        h = int(round(h * scale * 1.875))
+        w = int(round(w * scale * 2))
 
     return cv.resize(image, (w, h))
 
@@ -115,11 +118,10 @@ def main():
         if width:
             if width <= 0:
                 raise ValueError("Width is invalid!")
-            if args.braille:
-                width *= 2
-            scale = width / (image.shape[1] * 1.75)
+            scale = width / (image.shape[1])
+
         
-        image = resize(image, scale)
+        image = resize(image, scale, args.braille)
         image = cv.cvtColor(image, cv.COLOR_BGR2RGB)
 
         if not args.braille:
