@@ -1,3 +1,4 @@
+from configer import Configer
 from interface import Interface
 from loader import Loader
 from resizer import Resizer
@@ -6,10 +7,11 @@ from colorizer import Colorizer
 from displayer import Displayer
 
 
-class Session(Interface, Loader, Resizer, Processor, Colorizer, Displayer):
+class Session(Configer, Interface, Loader, Resizer, Processor, Colorizer, Displayer):
     """A wrapper for the program
     """
     def __init__(self):
+        Configer.__init__(self)
         Interface.__init__(self)
         Loader.__init__(self)
         Resizer.__init__(self)

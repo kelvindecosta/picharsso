@@ -16,7 +16,7 @@ class Loader:
             when the loaded file is not an image
         """
         try:
-            filename = self.args.source
+            filename = self.args.image
             if not(exists(filename) and isfile(filename)):
                 raise FileNotFoundError(f"File {filename} does not exist")
         
@@ -27,3 +27,4 @@ class Loader:
             self.image = cvtColor(self.image, COLOR_BGR2RGB if self.args.color else COLOR_BGR2GRAY)
         except Exception as e:
             print(e)
+            exit()

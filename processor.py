@@ -10,9 +10,6 @@ PATTERN = {
     (3, 0) : 0x40, (3, 1) : 0x80
 }
 
-# ASCII Charset
-CHARSET = " :!?PG@"
-
 
 class Processor:
     """A wrapper for processing the image
@@ -56,9 +53,14 @@ class Processor:
     def ascii(self):
         """Processes image and extracts values for ASCII based text art
         """
+        # Load charsets from config
+        charset = self.config.charsets[self.args.charset]
+        if self.args.negative:
+            charset = charset[::-1]
+
         canvas = self.gray()
-        canvas = normalize(canvas, None, 0, len(CHARSET)-1, NORM_MINMAX)
-        self.text = vectorize(lambda x: CHARSET[x])(canvas)
+        canvas = normalize(canvas, None, 0, len(charset)-1, NORM_MINMAX)
+        self.text = vectorize(lambda x: charset[x])(canvas)
 
         self.colorize()
         self.display()

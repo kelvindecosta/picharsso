@@ -4,24 +4,6 @@ from cv2 import filter2D
 from sty import fg
 
 
-def color(text, color):
-    """Colors text based on ANSI encodings
-    
-    Parameters
-    ----------
-    text : str
-        Text to be colored
-    color : tuple
-        RGB values
-    
-    Returns
-    -------
-    str
-        Colored text
-    """
-    return f"{fg(*color)}{text}{fg.rs}"
-
-
 class Colorizer:
     """A wrapper for colorizing text
     """
@@ -36,4 +18,27 @@ class Colorizer:
             kernel = ones((hr, wr), dtype=float) / (hr * wr)
             colors = unstructured_to_structured(filter2D(self.image, -1, kernel)[::hr, ::wr, :]).astype("O")
             
-            self.text = vectorize(color)(self.text, colors)
+            self.text = vectorize(self.color)(self.text, colors)
+
+
+    def color(self, text, color):
+        """Colors text
+        
+        Parameters
+        ----------
+        text : str
+            Text to be colored
+        color : tuple
+            RGB values
+        
+        Returns
+        -------
+        str
+            Colored text
+        """
+        output = {
+            "ansi" : lambda x, y : f"{fg(*y)}{x}{fg.rs}",
+            "html" : lambda x, y : f'<span style="color : rgb{tuple(y)};">{x}</span>'
+        }
+        
+        return output.get(self.args.output_type)(text, color)
