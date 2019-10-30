@@ -12,21 +12,56 @@ class Resizer:
         tw = self.args.width
         th = self.args.height
 
-        if all([x is None for x in [tw, th]]):
+        if th is False and tw is False:
             tw, th = get_terminal_size()
-        
-        if self.args.ratio:
-            if tw is None:
-                tw = int(round(ow * th / oh))
-            else:
-                th = int(round(oh * tw / ow))
-        
-        if not self.args.command == "braille":
-            nh = int(round(th / 1.75))
-            nw = tw
         else:
-            nh = int(round(th * 1.875))
-            nw = tw * 2
+            if th is None:
+                _, th = get_terminal_size()
+            
+            if tw is None:
+                tw, _ = get_terminal_size()
         
-        self.image = resize(self.image, (nw, nh))
+        self.image = resize(self.image, self.calc_size(oh, ow, th, tw)[::-1])
 
+
+    def calc_size(self, oh, ow, th, tw):
+        """Calculates new image size based on original image and text dimensions
+        
+        Parameters
+        ----------
+        oh : int
+            original image height
+        ow : int
+            original image width
+        th : int
+            text height
+        tw : int
+            text width
+        
+        Returns
+        -------
+        (int, int)
+            new image height, width
+        """
+        if self.args.command == "braille":
+            if bool(th) and bool(tw):
+                nh = th * 4
+                nw = tw * 2
+            elif bool(th):
+                nh = th * 4
+                nw = int(round(ow / oh * nh))
+            else:
+                nw = tw * 2
+                nh = int(round(oh / ow * nw))
+        elif self.args.command == "ascii":
+            if bool(th) and bool(tw):
+                nh = th
+                nw = tw
+            elif bool(th):
+                nh = th
+                nw = int(round(ow / oh * nh * 1.75))
+            else:
+                nw = tw
+                nh = int(round(oh / ow * nw / 1.75))
+
+        return nh, nw
