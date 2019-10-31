@@ -12,4 +12,7 @@ class Configer:
 
     def load_config(self):
         with open(self.config_file, "r") as f:
-            self.config = SimpleNamespace(**load(f))
+            self.configuration = SimpleNamespace(**load(f))
+
+    def config(self):
+        print(self.config_file)

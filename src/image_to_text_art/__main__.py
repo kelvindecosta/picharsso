@@ -1,10 +1,10 @@
-from configer import Configer
-from interface import Interface
-from loader import Loader
-from resizer import Resizer
-from processor import Processor
-from colorizer import Colorizer
-from displayer import Displayer
+from .configer import Configer
+from .interface import Interface
+from .loader import Loader
+from .resizer import Resizer
+from .processor import Processor
+from .colorizer import Colorizer
+from .displayer import Displayer
 
 
 class Session(Configer, Interface, Loader, Resizer, Processor, Colorizer, Displayer):
@@ -21,5 +21,10 @@ class Session(Configer, Interface, Loader, Resizer, Processor, Colorizer, Displa
         
         getattr(self, self.args.command)()
 
-if __name__ == "__main__":
+
+def main():
     sess = Session()
+
+
+if __name__ == "__main__":
+    main()

@@ -5,7 +5,7 @@ from os import get_terminal_size
 class Resizer:
     """A wrapper for resizing the loaded image
     """
-    def __init__(self):
+    def resize_image(self):
         """Resizes loaded image
         """
         oh, ow = self.image.shape[:2]
@@ -42,8 +42,8 @@ class Resizer:
         -------
         (int, int)
             new image height, width
-        """
-        if self.args.command == "braille":
+        """        
+        if self.args.art == "braille":
             if bool(th) and bool(tw):
                 nh = th * 4
                 nw = tw * 2
@@ -53,7 +53,7 @@ class Resizer:
             else:
                 nw = tw * 2
                 nh = int(round(oh / ow * nw))
-        elif self.args.command == "ascii":
+        elif self.args.art == "ascii":
             if bool(th) and bool(tw):
                 nh = th
                 nw = tw

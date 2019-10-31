@@ -14,26 +14,31 @@ PATTERN = {
 class Processor:
     """A wrapper for processing the image
     """
-    def gray(self):
-        """Returns the grayscale of loaded image
-        
-        Returns
-        -------
-        np.array
-            Grayscaled source loaded image
+    def art(self):
+        """Processes image and extracts values for text art
         """
+        self.load_image()
+        self.resize_image()
+
         if self.args.color:
-            gray = cvtColor(self.image, COLOR_RGB2GRAY)
+            canvas = cvtColor(self.image, COLOR_RGB2GRAY)
         else:
-            gray = self.image
-    
-        return gray
+            canvas = self.image
+        
+        run = {
+            "braille" : self.braille,
+            "ascii" : self.ascii
+        }
+
+        run.get(self.args.art)(canvas)
+
+        self.colorize()
+        self.display()
 
 
-    def braille(self):
+    def braille(self, canvas):
         """Processes image and extracts values for Braille based text art
         """
-        canvas = self.gray()
         canvas = canvas.astype(int)
 
         text = zeros(canvas[::4, ::2].shape, dtype=int)
@@ -46,21 +51,14 @@ class Processor:
         text = ascontiguousarray(text)
         self.text = text
 
-        self.colorize()
-        self.display()
 
-
-    def ascii(self):
+    def ascii(self, canvas):
         """Processes image and extracts values for ASCII based text art
         """
         # Load charsets from config
-        charset = self.config.charsets[self.args.charset]
+        charset = self.configuration.charsets[self.args.charset]
         if self.args.negative:
             charset = charset[::-1]
 
-        canvas = self.gray()
         canvas = normalize(canvas, None, 0, len(charset)-1, NORM_MINMAX)
         self.text = vectorize(lambda x: charset[x])(canvas)
-
-        self.colorize()
-        self.display()

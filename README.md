@@ -4,72 +4,134 @@ A command line utility to convert an image to text art.
 
 ## Installation
 
-Ensure that the required dependencies are installed.
-
 ```bash
-pip install -r requirements.txt
+pip install image-to-text-art
 ```
 
 ## Usage
 
-```bash
-python main.py
 ```
-
-```
-usage: image-to-text-art [-h] [-o] [-c] [-v] [-W] [-H] [-r]
-                         source {ascii,braille} ...
+usage: img2txt [-h] {config,art} ...
 
 Image to Text Art
 
 positional arguments:
-  source           path to source image
-  {ascii,braille}
-    ascii          apply ASCII
-    braille        apply Braille
+  {config,art}
+    config      show config path
+    art         transform image to text art
 
 optional arguments:
-  -h, --help       show this help message and exit
-  -o , --output    path to output file
-  -c, --color      keep color
-  -v, --verbose    verbose output
-  -W , --width     width of output in characters
-  -H , --height    height of output in characters
-  -r, --ratio      preserve aspect ratio
+  -h, --help    show this help message and exit
 ```
 
-## Examples
+* `art`
+
+  ```
+  usage: img2txt art [-h] {ascii,braille} ...
+
+  positional arguments:
+    {ascii,braille}
+      ascii          apply ASCII
+      braille        apply Braille
+
+  optional arguments:
+    -h, --help       show this help message and exit
+  ```
+
+  * `ascii`
+  
+  ```
+  usage: img2txt art ascii [-h] [-c] [-W [width]] [-H [height]] [-o {ansi,html}]
+                         [-f OUTPUT_FILE] [-q] [-s {0,1}] [-n]
+                         image
+
+  positional arguments:
+    image                 path to image
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    -c, --color           keep color
+    -W [width], --width [width]
+                          width of output in characters, flags to fit terminal
+    -H [height], --height [height]
+                          height of output in characters, flags to fit terminal
+    -o {ansi,html}, --output-type {ansi,html}
+                          type of output
+    -f OUTPUT_FILE, --output-file OUTPUT_FILE
+                          path to output file
+    -q, --quiet           disable console output
+    -s {0,1}, --charset {0,1}
+                          choice of charset (options available in config)
+    -n, --negative        reverse grayscale
+  ```
+
+  * `braille`
+
+  ```
+  usage: img2txt art braille [-h] [-c] [-W [width]] [-H [height]]
+                           [-o {ansi,html}] [-f OUTPUT_FILE] [-q]
+                           [-t threshold]
+                           image
+
+  positional arguments:
+    image                 path to image
+
+  optional arguments:
+    -h, --help            show this help message and exit
+    -c, --color           keep color
+    -W [width], --width [width]
+                          width of output in characters, flags to fit terminal
+    -H [height], --height [height]
+                          height of output in characters, flags to fit terminal
+    -o {ansi,html}, --output-type {ansi,html}
+                          type of output
+    -f OUTPUT_FILE, --output-file OUTPUT_FILE
+                          path to output file
+    -q, --quiet           disable console output
+    -t threshold, --threshold threshold
+                          threshold pixel intensity
+  ```
+
+## Example
 
 Consider the following poster:
 
-<p align="center"><img src="./assets/example.jpg"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/kelvindecosta/image-to-text-art/master/assets/readme/example.jpg" width="300"></p>
+
+The following images are screenshots of the outputs of different runs on a terminal with a dark background.
 
 ### ASCII
 
-#### [Grayscale](./assets/ascii-gray.txt)
+#### Grayscale
 
 ```bash
-python main.py assets/example.jpg -v -r -o assets/ascii-gray.txt ascii
+img2txt art ascii assets/readme/example.jpg -H
 ```
 
-#### [Colorized](./assets/ascii-color.txt)
+<p align="center"><img src="https://raw.githubusercontent.com/kelvindecosta/image-to-text-art/master/assets/readme/ascii-gray.png" width="300"></p>
+
+#### Color
 
 ```bash
-python main.py assets/example.jpg -v -r -c -o assets/ascii-color.txt ascii
+img2txt art ascii assets/readme/example.jpg -H -c
 ```
+
+<p align="center"><img src="https://raw.githubusercontent.com/kelvindecosta/image-to-text-art/master/assets/readme/ascii-color.png" width="300"></p>
 
 ### Braille
 
-#### [Grayscale](./assets/braille-gray.txt)
+#### Grayscale
 
 ```bash
-python main.py assets/example.jpg -v -r -o assets/braille-gray.txt braille -t 64
+img2txt art braille assets/readme/example.jpg -H
 ```
 
-#### [Colorized](./assets/braille-color.txt)
+<p align="center"><img src="https://raw.githubusercontent.com/kelvindecosta/image-to-text-art/master/assets/readme/braille-gray.png" width="300"></p>
+
+#### Color
 
 ```bash
-python main.py assets/example.jpg -v -r -c -o assets/braille-color.txt braille -t 64
+img2txt art braille assets/readme/example.jpg -H -c
 ```
 
-<p align="center"><img src="./assets/braille-color.png"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/kelvindecosta/image-to-text-art/master/assets/readme/braille-color.png" width="300"></p>

@@ -5,7 +5,7 @@ from os.path import exists, isfile
 class Loader:
     """A wrapper for loading images
     """
-    def __init__(self):
+    def load_image(self):
         """Loads source image
         
         Raises
