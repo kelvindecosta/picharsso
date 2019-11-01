@@ -10,6 +10,8 @@ pip install image-to-text-art
 
 ## Usage
 
+With the `-h` flag, the program outputs usage information.
+
 ```
 usage: img2txt [-h] {config,art} ...
 
@@ -24,73 +26,7 @@ optional arguments:
   -h, --help    show this help message and exit
 ```
 
-* `art`
-
-  ```
-  usage: img2txt art [-h] {ascii,braille} ...
-
-  positional arguments:
-    {ascii,braille}
-      ascii          apply ASCII
-      braille        apply Braille
-
-  optional arguments:
-    -h, --help       show this help message and exit
-  ```
-
-  * `ascii`
-  
-  ```
-  usage: img2txt art ascii [-h] [-c] [-W [width]] [-H [height]] [-o {ansi,html}]
-                         [-f OUTPUT_FILE] [-q] [-s {0,1}] [-n]
-                         image
-
-  positional arguments:
-    image                 path to image
-
-  optional arguments:
-    -h, --help            show this help message and exit
-    -c, --color           keep color
-    -W [width], --width [width]
-                          width of output in characters, flags to fit terminal
-    -H [height], --height [height]
-                          height of output in characters, flags to fit terminal
-    -o {ansi,html}, --output-type {ansi,html}
-                          type of output
-    -f OUTPUT_FILE, --output-file OUTPUT_FILE
-                          path to output file
-    -q, --quiet           disable console output
-    -s {0,1}, --charset {0,1}
-                          choice of charset (options available in config)
-    -n, --negative        reverse grayscale
-  ```
-
-  * `braille`
-
-  ```
-  usage: img2txt art braille [-h] [-c] [-W [width]] [-H [height]]
-                           [-o {ansi,html}] [-f OUTPUT_FILE] [-q]
-                           [-t threshold]
-                           image
-
-  positional arguments:
-    image                 path to image
-
-  optional arguments:
-    -h, --help            show this help message and exit
-    -c, --color           keep color
-    -W [width], --width [width]
-                          width of output in characters, flags to fit terminal
-    -H [height], --height [height]
-                          height of output in characters, flags to fit terminal
-    -o {ansi,html}, --output-type {ansi,html}
-                          type of output
-    -f OUTPUT_FILE, --output-file OUTPUT_FILE
-                          path to output file
-    -q, --quiet           disable console output
-    -t threshold, --threshold threshold
-                          threshold pixel intensity
-  ```
+For an in depth guide to the functionality of the program, navigate to the [Wiki](https://github.com/kelvindecosta/image-to-text-art/wiki).
 
 ## Example
 

@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="image-to-text-art",
-    version="1.0",
+    version="1.1",
     description="A command line utility to convert an image to text art.",
     long_description=long_description,
     long_description_content_type="text/markdown",
