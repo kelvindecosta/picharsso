@@ -5,12 +5,12 @@ with open("README.md", "r") as fh:
 
 
 setup(
-    name="image-to-text-art",
-    version="1.1",
+    name="picharsso",
+    version="1.21",
     description="A command line utility to convert an image to text art.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/kelvindecosta/image-to-text-art",
+    url="https://github.com/kelvindecosta/picharsso",
     author="Kelvin DeCosta",
     author_email="decostakelvin@gmail.com",
     license="MIT",
@@ -31,7 +31,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "img2txt = image_to_text_art.__main__:main",
+            "picharsso = picharsso.__main__:main",
         ]
     },
 )

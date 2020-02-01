@@ -7,9 +7,9 @@ class Interface:
     def __init__(self):
         """Creates a parser and parses arguments
         """
-        parser = ArgumentParser(description="Image to Text Art", prog="img2txt")
+        parser = ArgumentParser(description="Picharsso", prog="picharsso")
         commands = parser.add_subparsers(dest="command")
-        
+
         # config
         p_config = commands.add_parser("config", help="show config path")
 
@@ -34,8 +34,8 @@ class Interface:
         # art > braille
         p_braille = p_art_sub.add_parser("braille", help="apply Braille", parents=[p_art_helper])
         p_braille.add_argument("-t", "--threshold", type=int, help="threshold pixel intensity", default=self.configuration.threshold, metavar="threshold")
-        
-        
+
+
         self.args = parser.parse_args()
         if self.args.command is None:
             parser.print_help()
