@@ -1,37 +1,31 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+from src.meta import NAME, DESCRIPTION, VERSION, REPO_URL, DOCS_URL, AUTHOR, LICENSE
 
+with open("README.md", "r") as fs:
+    LONGE_DESCRIPTION = fs.read()
 
 setup(
-    name="picharsso",
-    version="1.21",
-    description="A command line utility to convert an image to text art.",
-    long_description=long_description,
+    name=NAME,
+    version=VERSION,
+    description=DESCRIPTION,
+    long_description=LONGE_DESCRIPTION,
     long_description_content_type="text/markdown",
-    url="https://github.com/kelvindecosta/picharsso",
-    author="Kelvin DeCosta",
+    project_urls={"Documentation": DOCS_URL, "Source": REPO_URL},
+    author=AUTHOR,
     author_email="decostakelvin@gmail.com",
-    license="MIT",
+    license=LICENSE,
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+        "License :: OSI Approved :: MIT License",
+        "Development Status :: 5 - Production/Stable",
+        "Topic :: Artistic Software",
+        "Topic :: Terminals",
+        "Topic :: Utilities",
     ],
-    python_requires='>=3.6',
-    packages=find_packages("src"),
-    package_dir={"" : "src"},
-    package_data={
-        "" : ["*.json"]
-    },
-    install_requires=[
-        "opencv-python",
-        "sty"
-    ],
-    entry_points={
-        "console_scripts": [
-            "picharsso = picharsso.__main__:main",
-        ]
-    },
+    packages=list(map(lambda x: x.replace("src", NAME), find_packages("."))),
+    package_dir={NAME: "src"},
+    package_data={"": ["data/*.txt"]},
+    python_requires=">=3.8",
 )
