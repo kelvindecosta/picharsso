@@ -1,3 +1,4 @@
+import numpy as np
 from PIL import Image
 
 
@@ -16,3 +17,18 @@ def ensure_rgb(image):
 
     # Convert to `RGB` mode
     return image.convert("RGB")
+
+
+def submatrices(matrix, shape):
+    # Extract strides and shapes for calculation.
+    mat_hs, mat_ws = matrix.strides[:2]
+    mat_h, mat_w = matrix.shape[:2]
+    ker_h, ker_w = shape
+
+    # View `matrix` according to new strides and shape.
+    return np.lib.stride_tricks.as_strided(
+        matrix,
+        (1 + (mat_h - ker_h) // ker_h, 1 + (mat_w - ker_w) // ker_w, ker_h, ker_w)
+        + matrix.shape[2:],
+        strides=(ker_h * mat_hs, ker_w * mat_ws, mat_hs, mat_ws) + matrix.strides[2:],
+    )
