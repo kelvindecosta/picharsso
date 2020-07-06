@@ -24,6 +24,10 @@ def ensure_rgb(image):
     return image.convert("RGB")
 
 
+def italicize(text):
+    return f"{ef.italic}{text}{rs.italic}"
+
+
 def submatrices(matrix, shape):
     # Extract strides and shapes for calculation.
     mat_hs, mat_ws = matrix.strides[:2]
