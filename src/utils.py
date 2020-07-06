@@ -1,5 +1,10 @@
 import numpy as np
 from PIL import Image
+from sty import ef, rs
+
+
+def embolden(text):
+    return f"{ef.bold}{text}{rs.bold_dim}"
 
 
 def ensure_rgb(image):
