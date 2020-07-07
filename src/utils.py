@@ -1,3 +1,5 @@
+import shutil
+
 import numpy as np
 from PIL import Image
 from sty import ef, rs
@@ -41,3 +43,7 @@ def submatrices(matrix, shape):
         + matrix.shape[2:],
         strides=(ker_h * mat_hs, ker_w * mat_ws, mat_hs, mat_ws) + matrix.strides[2:],
     )
+
+
+def terminal_size():
+    return shutil.get_terminal_size()[::-1]
