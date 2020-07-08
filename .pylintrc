@@ -1,0 +1,5 @@
+[TYPECHECK]
+disable=
+    arguments-differ,
+    bad-continuation,
+    too-many-arguments
