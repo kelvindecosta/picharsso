@@ -28,4 +28,6 @@ setup(
     package_dir={NAME: "src"},
     package_data={"": ["data/*.txt"]},
     python_requires=">=3.8",
+    install_requires=["click", "numpy", "pillow", "sty",],
+    entry_points={"console_scripts": [f"{NAME} = {NAME}.cli:main"]},
 )
