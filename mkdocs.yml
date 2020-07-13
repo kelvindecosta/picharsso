@@ -1,0 +1,86 @@
+site_name: Picharsso
+site_description: "A utility for converting images to text art."
+site_author: "Kelvin DeCosta"
+site_url: https://kelvindecosta.github.io/picharsso
+
+repo_name: kelvindecosta/picharsso
+repo_url: https://github.com/kelvindecosta/picharsso
+edit_uri: ""
+
+copyright: Copyright &copy; 2019 Kelvin DeCosta
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  logo: assets/images/favicon.webp
+  palette:
+    primary: black
+    accent: light blue
+  font:
+    text: Nunito
+    code: Source Code Pro
+  favicon: assets/images/favicon.webp
+  include_search_page: false
+  search_index_only: true
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - def_list
+  - meta
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.details
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - toc:
+      permalink: "#"
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          rendering:
+            show_root_heading: false
+            show_root_toc_entry: false
+  - exclude:
+      glob:
+        - snippets/*
+  - minify:
+      minify_html: true
+
+extra:
+  social:
+    - icon: fontawesome/solid/globe
+      link: https://kelvindecosta.com
+      name: "Website"
+    - icon: fontawesome/brands/github
+      link: https://github.com/kelvindecosta
+      name: "GitHub"
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/kelvindecosta
+      name: "LinkedIn"
+    - icon: fontawesome/brands/instagram
+      link: https://instagram.com/_kelvindecosta
+      name: "Instagram"
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/_kelvindecosta
+      name: "Twitter"
+    - icon: fontawesome/solid/envelope
+      link: https://mailhide.io/e/c1R8e
+      name: "Mail"
+  site_image: assets/images/logo.webp
+
+extra_css:
+  - assets/css/mkdocstrings.css
+
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
