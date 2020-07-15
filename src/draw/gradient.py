@@ -1,12 +1,41 @@
+"""
+This module defines a drawer for [gradient style](/styles/gradient/).
+
+--8<-- "docs/snippets/chunks/draw/styles/gradient/example.md"
+"""
+
 import numpy as np
 
 from .base import BaseDrawer
 
 DEFAULT_CHARSET: str = " :!?PG@"
+"""The default character set."""
 
 
 class GradientDrawer(BaseDrawer):
+    """
+    A drawer for [gradient style](/styles/gradient/).
+
+    Inherits [`BaseDrawer`][picharsso.draw.base.BaseDrawer].
+
+    Attributes:
+        charset (str): A set of characters ordered by the amount of area
+                        their symbols occupy.
+        negative (bool): Whether or not to reverse the `charset`.
+        charset_array (numpy.ndarray): A vectorized version of the `charset`.
+    """
+
     def __init__(self, charset=DEFAULT_CHARSET, negative=False, **kwargs):
+        """Initialization method.
+
+        Args:
+            charset (Optional[str]): A set of characters ordered
+                                    by the amount of area their symbols occupy.
+                                    Defaults to `DEFAULT_CHARSET`
+            negative (Optional[bool]): Whether or not to reverse the `charset`.
+            **kwargs (dict): Appropriate keyword arguments.
+                            See [`BaseDrawer`][picharsso.draw.base.BaseDrawer].
+        """
         super().__init__(**kwargs)
         self.charset = None
         self.negative = None
@@ -43,6 +72,14 @@ class GradientDrawer(BaseDrawer):
         ]
 
     def set(self, charset=None, negative=None, **kwargs):
+        """Sets attributes of the drawer instance.
+
+        Args:
+            charset (Optional[str]): Sets `charset`.
+            negative (Optional[bool]): Sets `negative`.
+            **kwargs (dict): Appropriate keyword arguments.
+                    See [`BaseDrawer.set`][picharsso.draw.base.BaseDrawer.set].
+        """
         super().set(**kwargs)
 
         if charset is not None:
@@ -54,3 +91,6 @@ class GradientDrawer(BaseDrawer):
         self.charset_array = np.array(
             list(self.charset if not self.negative else self.charset[::-1])
         )
+
+
+__all__ = ["GradientDrawer"]

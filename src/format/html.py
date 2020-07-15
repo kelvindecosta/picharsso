@@ -1,3 +1,5 @@
+"""This module defines a formatter for [HTML](/formats/html)."""
+
 from html.entities import name2codepoint
 
 import numpy as np
@@ -5,11 +7,18 @@ import numpy as np
 from .base import BaseFormatter
 
 HTML_ENTITY_MAP: dict = {chr(value): key for (key, value) in name2codepoint.items()}
+"""A dictionary mapping unicode characters to their equivalent HTML entities."""
 
 HTML_ENTITY_MAP[" "] = "nbsp;"
 
 
 class HtmlFormatter(BaseFormatter):
+    """
+    A formatter for [HTML](/formats/html).
+
+    Inherits [`BaseFormatter`][picharsso.format.base.BaseFormatter].
+    """
+
     @staticmethod
     def color(text, color):
         return f'<span style="color : rgb{tuple(color)};">{text}</span>'
@@ -35,3 +44,6 @@ class HtmlFormatter(BaseFormatter):
         return "<div>{}</div>".format(
             "\n".join([f"<div>{''.join(row)}</div>" for row in text_matrix])
         )
+
+
+__all__ = ["HtmlFormatter", "HTML_ENTITY_MAP"]

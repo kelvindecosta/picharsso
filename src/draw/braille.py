@@ -1,13 +1,40 @@
+"""
+This module defines a drawer for the [Braille style](/styles/braille/).
+
+--8<-- "docs/snippets/chunks/draw/styles/braille/example.md"
+"""
+
 import numpy as np
 
 from .base import BaseDrawer
 from ..utils import submatrices
 
 DEFAULT_THRESHOLD: int = 64
+"""The default threshold grayscale intensity."""
 
 
 class BrailleDrawer(BaseDrawer):
+    """
+    A drawer for the [Braille style](/styles/braille/).
+
+    Inherits [`BaseDrawer`][picharsso.draw.base.BaseDrawer].
+
+    Attributes:
+        threshold (int): Threshold grayscale intensity for pixels to be considered.
+        kernel (numpy.ndarray): A hard-coded matrix relating the intensity to
+                             the Unicode values for Braille characters.
+        charset_array (numpy.ndarray): A matrix of all Braille characters,
+                                    indexed by their offsetted Unicode value.
+    """
+
     def __init__(self, threshold=DEFAULT_THRESHOLD, **kwargs):
+        """Initialization method.
+
+        Args:
+            threshold (Optional[int]): Threshold grayscale intensity
+                                    for pixels to be considered.
+        """
+
         super().__init__(**kwargs)
         self.threshold = None
         self.set(threshold=threshold)
@@ -55,7 +82,17 @@ class BrailleDrawer(BaseDrawer):
         ]
 
     def set(self, threshold=None, **kwargs):
+        """Sets attributes of the drawer instance.
+
+        Args:
+            threshold (Optional[int]): Sets `threshold`.
+            **kwargs (dict): Appropriate keyword arguments.
+                    See [`BaseDrawer.set`][picharsso.draw.base.BaseDrawer.set].
+        """
         super().set(**kwargs)
 
         if threshold is not None:
             self.threshold = threshold
+
+
+__all__ = ["BrailleDrawer"]
