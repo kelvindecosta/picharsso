@@ -1,10 +1,21 @@
 """This module defines utility functions that are used across the package."""
 
+from os import system, name
 import shutil
 
 import numpy as np
 from PIL import Image
 from sty import ef, rs
+
+
+def clear_screen():
+    """Clears the terminal console."""
+    # Windows systems
+    if name == "nt":
+        _ = system("cls")
+    # Unix systems
+    else:
+        _ = system("clear")
 
 
 def embolden(text):
@@ -102,6 +113,7 @@ def terminal_size():
 
 
 __all__ = [
+    "clear_screen",
     "embolden",
     "ensure_rgb",
     "italicize",
