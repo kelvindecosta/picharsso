@@ -1,0 +1,10 @@
+Usage: picharsso [options] <command> [args]
+
+  A utility for converting images to text art.
+
+Options:
+  -h, --help  Show this message and exit.
+
+Commands:
+  draw  Generate text art from an image.
+  info  Displays package information.

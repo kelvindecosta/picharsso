@@ -1,0 +1,9 @@
+Usage: picharsso draw braille [options]
+
+  Use the Braille style.
+
+Options:
+  -t, --threshold INTEGER RANGE  Threshold pixel luminance (from grayscale).
+                                 [default: 64]
+
+  -h, --help                     Show this message and exit.

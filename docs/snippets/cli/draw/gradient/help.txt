@@ -1,0 +1,10 @@
+Usage: picharsso draw gradient [options]
+
+  Use the gradient style.
+
+Options:
+  -s, --charset TEXT  Character set ordered by increasing 'brightness'.
+                      [default:  :!?PG@]
+
+  -n, --negative      Whether to invert output text brightness.
+  -h, --help          Show this message and exit.

@@ -1,3 +1,9 @@
+"""This module defines the `picharsso draw braille` command.
+
+Refer to https://kelvindecosta.github.io/picharsso/commands/draw/braille/.
+"""
+
+
 import click
 
 from ...draw import new_drawer

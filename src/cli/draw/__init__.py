@@ -1,3 +1,8 @@
+"""This package defines the `picharsso draw` command.
+
+Refer to https://kelvindecosta.github.io/picharsso/commands/draw/.
+"""
+
 import click
 from PIL import Image
 

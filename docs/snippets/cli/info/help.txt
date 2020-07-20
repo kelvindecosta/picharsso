@@ -1,0 +1,6 @@
+Usage: picharsso info [options]
+
+  Displays package information.
+
+Options:
+  -h, --help  Show this message and exit.

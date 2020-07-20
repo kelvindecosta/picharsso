@@ -1,3 +1,8 @@
+"""This module defines the `picharsso draw gradient` command.
+
+Refer to https://kelvindecosta.github.io/picharsso/commands/draw/gradient/.
+"""
+
 import click
 
 from ...draw import new_drawer

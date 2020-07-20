@@ -1,0 +1,28 @@
+Usage: picharsso draw [options] <path> <command> [args]
+
+  Generate text art from an image.
+
+  <path>                          Path to the image file.
+
+Options:
+  -c, --colorize                  Apply image colors to output text.
+  -m, --mode [ansi|html]          Format mode for output text.  [default:
+                                  ansi]
+
+  -r, --resample [nearest|box|bilinear|hamming|bicubic|lanczos]
+                                  Resampling filter.  [default: nearest]
+  -H, --height INTEGER            Height of output text in characters.
+                                  
+                                  If 0, derives from width.  [default: 0]
+
+  -W, --width INTEGER             Width of output text in characters.
+                                  
+                                  If 0, derives from height.  [default: 0]
+
+  -term-h, --terminal-height      Sets height to terminal height.
+  -term-w, --terminal-width       Sets width to terminal width.
+  -h, --help                      Show this message and exit.
+
+Commands:
+  braille   Use the Braille style.
+  gradient  Use the gradient style.

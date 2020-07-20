@@ -1,3 +1,8 @@
+"""This module defines the `picharsso info` command.
+
+Refer to https://kelvindecosta.github.io/picharsso/commands/info/.
+"""
+
 from pathlib import Path
 
 import click
