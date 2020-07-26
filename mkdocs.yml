@@ -9,6 +9,42 @@ edit_uri: ""
 
 copyright: Copyright &copy; 2019 Kelvin DeCosta
 
+nav:
+  - Home: index.md
+  - Styles:
+      - Overview: styles/index.md
+      - Braille: styles/braille.md
+      - Gradient: styles/gradient.md
+  - Formats:
+      - Overview: formats/index.md
+      - ANSI: formats/ansi.md
+      - HTML: formats/html.md
+  - CLI:
+      - picharsso: commands/index.md
+      - picharsso draw: commands/draw/index.md
+      - picharsso draw braille: commands/draw/braille.md
+      - picharsso draw gradient: commands/draw/gradient.md
+      - picharsso info: commands/info.md
+  - API:
+      - draw:
+          - __init__: library/draw/index.md
+          - base: library/draw/base.md
+          - braille: library/draw/braille.md
+          - gradient: library/draw/gradient.md
+      - format:
+          - __init__: library/format/index.md
+          - base: library/format/base.md
+          - ansi: library/format/ansi.md
+          - html: library/format/html.md
+      - meta: library/meta.md
+      - utils: library/utils.md
+  - Examples:
+      - Image: examples/01-image/index.md
+      - GIF: examples/02-gif/index.md
+      - Web: examples/03-web/index.md
+  - License: license.md
+  - Contributing: contributing.md
+
 theme:
   name: material
   custom_dir: docs/overrides
