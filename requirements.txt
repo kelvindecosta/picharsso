@@ -1,0 +1,15 @@
+# For package
+click
+numpy
+pillow
+sty
+
+# For examples
+requests
+
+# For repository
+mkdocs
+mkdocs-exclude
+mkdocs-material
+mkdocs-minify-plugin
+mkdocstrings
