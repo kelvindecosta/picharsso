@@ -29,5 +29,7 @@ jobs:
           pip install .
 
       # Build documentation
+      - env:
+          GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
         run: |
           mkdocs gh-deploy --force
