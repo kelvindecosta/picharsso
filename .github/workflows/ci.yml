@@ -1,0 +1,33 @@
+name: ci
+on:
+  push:
+    branches:
+      - master
+
+# Environment
+env:
+  CI: true
+  PYTHON_VERSION: 3.x
+
+# Jobs to run
+jobs:
+  # Deploy documentation
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout source form GitHub
+      - uses: actions/checkout@v2
+
+      # Install Python runtime and dependencies
+      - uses: actions/setup-python@v1
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      # Install package and dependencies
+      - run: |
+          pip install -r requirements.txt
+          pip install .
+
+      # Build documentation
+        run: |
+          mkdocs gh-deploy --force
