@@ -6,7 +6,7 @@ NAME: str = "picharsso"
 DESCRIPTION: str = "A utility for converting images to text art."
 """The package description."""
 
-VERSION: str = "1.21"
+VERSION: str = "2.0.0"
 """The current package version.
 """
 
