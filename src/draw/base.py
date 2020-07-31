@@ -1,7 +1,9 @@
 """
 This module defines an abstract base drawer.
 
---8<-- "docs/snippets/references/styles.md"
+!!! question "Styles"
+    Refer to the [Styles documentation](../../styles/index.md)
+    for an in-depth guide to the **image processing behind Picharsso**.
 """
 
 from abc import ABC, abstractmethod
@@ -20,7 +22,7 @@ RESAMPLING_FILTERS: dict = {
     "lanczos": Image.LANCZOS,
 }
 """A collection of resampling filters.
-See [Pillow's Filters](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#filters).
+See [Pillow's Filters](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#filters){target=_blank}.
 """
 
 DEFAULT_RESAMPLING: str = "nearest"

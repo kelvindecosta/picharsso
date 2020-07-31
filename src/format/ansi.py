@@ -1,4 +1,4 @@
-"""This module defines a formatter for the [ANSI coloring scheme](/formats/ansi/)."""
+"""This module defines a formatter for the [ANSI coloring scheme](../../formats/ansi.md)."""
 
 from sty import fg
 
@@ -7,7 +7,7 @@ from .base import BaseFormatter
 
 class AnsiFormatter(BaseFormatter):
     """
-    A formatter for the [ANSI coloring scheme](/formats/ansi/).
+    A formatter for the [ANSI coloring scheme](../../formats/ansi.md).
 
     Inherits [`BaseFormatter`][picharsso.format.base.BaseFormatter].
     """

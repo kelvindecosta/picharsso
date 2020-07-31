@@ -5,24 +5,45 @@ description: "The Braille based text art style"
 
 # Braille
 
-This style uses the characters of the [Braille writing system](https://en.wikipedia.org/wiki/Braille).
+This style uses the characters of the [Braille writing system](https://en.wikipedia.org/wiki/Braille){target=_blank}.
 
---8<-- "docs/snippets/chunks/draw/styles/braille/example.md"
+??? example "Example"
+    Consider the following image:
+
+    <div align="center">
+        <p>
+            <img alt="Apple logo" src="../../assets/images/subjects/apple.webp" />
+        </p>
+        <p>
+            <em>Apple Computer [Rob Janoff, 1977]</em>
+        </p>
+    </div>
+
+    Here's what it should look like:
+
+    <div align="center">
+        <img
+            alt="Apple logo in text (Braille style)"
+            src="../../assets/images/outputs/demo/apple-braille.webp"
+        />
+    </div>
 
 !!! info "Encoding"
     Traditional Braille characters are made up of `6` dots (&#x283F;).
     Since each dot could be in one of `2` states (raised or lowered),
     there are a total of `64` unique combinations.
 
-    In [Unicode](https://en.wikipedia.org/wiki/Unicode), braille is represented in a block,
-    the [Braille Patterns](https://en.wikipedia.org/wiki/Braille_Patterns).
+    In [Unicode](https://en.wikipedia.org/wiki/Unicode){target=_blank}, braille is represented in a block,
+    the [Braille Patterns](https://en.wikipedia.org/wiki/Braille_Patterns){target=_blank}.
     There are `256` unique characters each in its own 8-dot cell (&#x28FF;).
 
 ## Procedure
 
 This style is implemented using the [`BrailleDrawer`][picharsso.draw.braille.BrailleDrawer].
 
---8<-- "docs/snippets/references/styling.md"
+!!! question "Styling"
+    Refer to the [procedure](./index.md#procedure) outlined in the Styles documentation
+    for an overview of the **steps common to all styles**.
 
 ### Initialization
 
@@ -33,15 +54,60 @@ whose **grayscale intensities are lesser** than it.
 
 Consider the following image:
 
---8<-- "docs/snippets/embed/subjects/contributions.html"
+<div align="center">
+    <p>
+        <img alt="Contributions" src="../../assets/images/subjects/contributions.webp" />
+    </p>
+    <p>
+        <em>Tiles ressembling GitHub contributions</em>
+    </p>
+</div>
 
 Here's what it should look like:
 
---8<-- "docs/snippets/chunks/draw/styles/braille/threshold.md"
+=== "threshold = 0"
+    <div align="center">
+        <img
+            alt="Contributions in text (Braille Threshold 0)"
+            src="../../assets/images/outputs/draw/styles/braille/threshold/contributions-braille-t0.webp"
+        />
+    </div>
+
+=== "70"
+    <div align="center">
+        <img
+            alt="Contributions in text (Braille Threshold 70)"
+            src="../../assets/images/outputs/draw/styles/braille/threshold/contributions-braille-t70.webp"
+        />
+    </div>
+
+=== "108"
+    <div align="center">
+        <img
+            alt="Contributions in text (Braille Threshold 108)"
+            src="../../assets/images/outputs/draw/styles/braille/threshold/contributions-braille-t108.webp"
+        />
+    </div>
+
+=== "168"
+    <div align="center">
+        <img
+            alt="Contributions in text (Braille Threshold 168)"
+            src="../../assets/images/outputs/draw/styles/braille/threshold/contributions-braille-t168.webp"
+        />
+    </div>
+
+=== "210"
+    <div align="center">
+        <img
+            alt="Contributions in text (Braille Threshold 210)"
+            src="../../assets/images/outputs/draw/styles/braille/threshold/contributions-braille-t210.webp"
+        />
+    </div>
 
 #### Matrices
 
-The `kernel` attribute holds a NumPy [`ndarray`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html)
+The `kernel` attribute holds a NumPy [`ndarray`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html){target=_blank}
 containing the following matrix:
 
 $$
@@ -58,7 +124,7 @@ is done by assigning each of the dots a power of `2`.
 Each character in the Braille Patterns block has a unique Unicode value
 that is obtained by summing these powers.
 
-The `charset_array` attribute holds another NumPy [`ndarray`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html)
+The `charset_array` attribute holds another NumPy [`ndarray`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html){target=_blank}
 containing all 256 Braille characters.
 
 ### Conversion
@@ -93,7 +159,7 @@ will be **assigned to one dot** (Braille character dot) in the output text.
     giving the final `text_matrix`.
 
 <div align="center">
-    <img alt="Processing an image into a text matrix (Braille style)" src="/assets/images/diagrams/styles/braille/processing.webp">
+    <img alt="Processing an image into a text matrix (Braille style)" src="../../assets/images/diagrams/styles/braille/processing.webp">
 </div>
 
 ??? abstract "Source"

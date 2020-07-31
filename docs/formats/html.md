@@ -5,18 +5,20 @@ description: "The HTML format"
 
 # HTML
 
-This format supports [HTML](https://en.wikipedia.org/wiki/HTML).
+This format supports [HTML](https://en.wikipedia.org/wiki/HTML){target=_blank}.
 
 ## Procedure
 
 This format is implemented by the [`HtmlFormatter`][picharsso.format.html.HtmlFormatter].
 
---8<-- "docs/snippets/references/formatting.md"
+!!! question "Formatting"
+    Refer to the [procedure](./index.md#procedure) outlined in the Formats documentation
+    for an overview of the **steps common to all formats**.
 
 ### Translation
 
 This format requires some characters to be translated
-to their equivalent [HTML character entities](https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references).
+to their equivalent [HTML character entities](https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references){target=_blank}.
 
 ??? abstract "Source"
     Refer to the [`translate` function][picharsso.format.html.HtmlFormatter.translate]

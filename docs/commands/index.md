@@ -25,8 +25,8 @@ picharsso [options] <command> [args]
 
 ## Subcommands
 
-### [`draw`](/commands/draw/)
+### [`draw`](draw/index.md)
 :   *Generate text art from an image.*
 
-### [`info`](/commands/info/)
+### [`info`](info.md)
 :   *Displays package information.*

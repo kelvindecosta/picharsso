@@ -1,7 +1,9 @@
 """
 This package defines drawers for different styles of text art.
 
---8<-- "docs/snippets/references/styles.md"
+!!! question "Styles"
+    Refer to the [Styles documentation](../../styles/index.md)
+    for an in-depth guide to the **image processing behind Picharsso**.
 """
 
 from .gradient import GradientDrawer

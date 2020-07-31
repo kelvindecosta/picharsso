@@ -5,7 +5,7 @@ description: "The ANSI format"
 
 # ANSI
 
-This format supports [ANSI Escape Codes](https://en.wikipedia.org/wiki/ANSI_escape_code).
+This format supports [ANSI Escape Codes](https://en.wikipedia.org/wiki/ANSI_escape_code){target=_blank}.
 
 !!! info "Default"
     Since it can be used to create **plain text documents**,
@@ -15,7 +15,9 @@ This format supports [ANSI Escape Codes](https://en.wikipedia.org/wiki/ANSI_esca
 
 This format is implemented by the [`AnsiFormatter`][picharsso.format.ansi.AnsiFormatter].
 
---8<-- "docs/snippets/references/formatting.md"
+!!! question "Formatting"
+    Refer to the [procedure](./index.md#procedure) outlined in the Formats documentation
+    for an overview of the **steps common to all formats**.
 
 ### Translation
 
@@ -27,7 +29,7 @@ This format doesn't require any translation.
 
 ### Colorization
 
-Using the [`sty` Python library](https://sty.mewo.dev/),
+Using the [`sty` Python library](https://sty.mewo.dev/){target=_blank},
 color is applied to the elements of the `text_matrix`.
 
 ??? abstract "Source"

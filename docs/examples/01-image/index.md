@@ -15,8 +15,21 @@ This example illustrates how to covert an image to text art.
 ??? success "Result"
     Consider the following image:
 
-    --8<-- "docs/snippets/embed/subjects/hackerman.html"
+    <div align="center">
+        <p>
+            <img alt="Hackerman" src="hackerman.webp" />
+        </p>
+        <p>
+            <em>Elliot Anderson is Hackerman [u/JBisBlu]</em>
+        </p>
+    </div>
     
     The output of the above script should look like this:
 
-    --8<-- "docs/snippets/embed/outputs/examples/01-image/hackerman-gradient.html"
+    <div align="center">
+        <img
+            alt="Hackerman in text (gradient style)"
+            src="../../assets/images/outputs/examples/01-image/hackerman-gradient.webp"
+        />
+    </div>
+

@@ -25,11 +25,32 @@ The `colorize` parameter controls whether the output text must include the color
 
 Consider the following image:
 
---8<-- "docs/snippets/embed/subjects/instagram.html"
+<div align="center">
+    <p>
+        <img alt="Instagram logo" src="../assets/images/subjects/instagram.webp" />
+    </p>
+    <p>
+        <em>Instagram</em>
+    </p>
+</div>
 
 Here's what it should look like:
 
---8<-- "docs/snippets/chunks/format/colorize.md"
+=== "colorize = False"
+    <div align="center">
+        <img
+            alt="Instagram logo in text (without color)"
+            src="../assets/images/outputs/format/colorize/instagram-gray.webp"
+        />
+    </div>
+
+=== "True"
+    <div align="center">
+        <img
+            alt="Instagram logo in text (with color)"
+            src="../assets/images/outputs/format/colorize/instagram-color.webp"
+        />
+    </div>
 
 #### Vectorization
 
@@ -54,7 +75,7 @@ are transformed into strings of text that represent
 the original character as well as its color.
 
 <div align="center">
-    <img alt="Text matrix colorization" src="/assets/images/diagrams/formats/overview/colorization.webp">
+    <img alt="Text matrix colorization" src="../assets/images/diagrams/formats/overview/colorization.webp">
 </div>
 
 ??? abstract "Source"
@@ -75,7 +96,7 @@ All the following formats are implemented by a `formatter`
 which inherits from the [`BaseFormatter`][picharsso.format.base.BaseFormatter].
 
 ### ANSI
-:   The [ANSI format](/formats/ansi/) is implemented by the [`AnsiFormater`][picharsso.format.ansi.AnsiFormatter].
+:   The [ANSI format](ansi.md) is implemented by the [`AnsiFormater`][picharsso.format.ansi.AnsiFormatter].
 
 ### HTML
-:   The [HTML format](/formats/html/) is implemented by the [`HtmlFormater`][picharsso.format.html.HtmlFormatter].
+:   The [HTML format](html.md) is implemented by the [`HtmlFormater`][picharsso.format.html.HtmlFormatter].

@@ -1,7 +1,26 @@
 """
-This module defines a drawer for the [Braille style](/styles/braille/).
+This module defines a drawer for the [Braille style](../../styles/braille.md).
 
---8<-- "docs/snippets/chunks/draw/styles/braille/example.md"
+??? example "Example"
+    Consider the following image:
+
+    <div align="center">
+        <p>
+            <img alt="Apple logo" src="../../assets/images/subjects/apple.webp" />
+        </p>
+        <p>
+            <em>Apple Computer [Rob Janoff, 1977]</em>
+        </p>
+    </div>
+
+    Here's what it should look like:
+
+    <div align="center">
+        <img
+            alt="Apple logo in text (Braille style)"
+            src="../../assets/images/outputs/demo/apple-braille.webp"
+        />
+    </div>
 """
 
 import numpy as np
@@ -15,7 +34,7 @@ DEFAULT_THRESHOLD: int = 64
 
 class BrailleDrawer(BaseDrawer):
     """
-    A drawer for the [Braille style](/styles/braille/).
+    A drawer for the [Braille style](../../styles/braille.md).
 
     Inherits [`BaseDrawer`][picharsso.draw.base.BaseDrawer].
 

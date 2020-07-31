@@ -20,4 +20,4 @@ This example illustrates how to animate a GIF image, from the web, in text art.
     the same principle can be applied to static images from the web.
 
 !!! warning
-    This example requires the [`requests` library](https://requests.readthedocs.io/en/master/).
+    This example requires the [`requests` library](https://requests.readthedocs.io/en/master/){target=_blank}.

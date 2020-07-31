@@ -5,15 +5,36 @@ description: "The gradient based text art style"
 
 # Gradient
 
-This style uses [Unicode characters](https://en.wikipedia.org/wiki/Unicode).
+This style uses [Unicode characters](https://en.wikipedia.org/wiki/Unicode){target=_blank}.
 
---8<-- "docs/snippets/chunks/draw/styles/gradient/example.md"
+??? example "Example"
+    Consider the following image:
+
+    <div align="center">
+        <p>
+            <img alt="Apple logo" src="../../assets/images/subjects/apple.webp" />
+        </p>
+        <p>
+            <em>Apple Computer [Rob Janoff, 1977]</em>
+        </p>
+    </div>
+
+    Here's what it should look like:
+
+    <div align="center">
+        <img
+            alt="Apple logo in text (gradient style)"
+            src="../../assets/images/outputs/demo/apple-gradient.webp"
+        />
+    </div>
 
 ## Procedure
 
 This style is implemented using the [`GradientDrawer`][picharsso.draw.gradient.GradientDrawer].
 
---8<-- "docs/snippets/references/styling.md"
+!!! question "Styling"
+    Refer to the [procedure](./index.md#procedure) outlined in the Styles documentation
+    for an overview of the **steps common to all styles**.
 
 ### Initialization
 
@@ -24,11 +45,48 @@ perceived brightness**.
 
 Consider the following image:
 
---8<-- "docs/snippets/embed/subjects/slack.html"
+<div align="center">
+    <p>
+        <img alt="Slack logo" src="../../assets/images/subjects/slack.webp" />
+    </p>
+    <p>
+        <em>Slack</em>
+    </p>
+</div>
 
 Here's what it should look like:
 
---8<-- "docs/snippets/chunks/draw/styles/gradient/charset.md"
+=== "charset = ' :!?PG@' (default)"
+    <div align="center">
+        <img
+            alt="Slack logo in text (default charset)"
+            src="../../assets/images/outputs/draw/styles/gradient/charset/slack-gradient-charset-default.webp"
+        />
+    </div>
+
+=== "'.'"
+    <div align="center">
+        <img
+            alt="Slack logo in text (dot charset)"
+            src="../../assets/images/outputs/draw/styles/gradient/charset/slack-gradient-charset-dot.webp"
+        />
+    </div>
+
+=== "'#'"
+    <div align="center">
+        <img
+            alt="Slack logo in text (hash charset)"
+            src="../../assets/images/outputs/draw/styles/gradient/charset/slack-gradient-charset-hash.webp"
+        />
+    </div>
+
+=== "'█'"
+    <div align="center">
+        <img
+            alt="Slack logo in text (block charset)"
+            src="../../assets/images/outputs/draw/styles/gradient/charset/slack-gradient-charset-block.webp"
+        />
+    </div>
 
 #### Negative
 
@@ -36,15 +94,36 @@ The `negative` parameter controls whether the `charset` must be **reversed**.
 
 Consider the following image:
 
---8<-- "docs/snippets/embed/subjects/github.html"
+<div align="center">
+    <p>
+        <img alt="GitHub logo" src="../../assets/images/subjects/github.webp" />
+    </p>
+    <p>
+        <em>GitHub</em>
+    </p>
+</div>
 
 Here's what it should look like:
 
---8<-- "docs/snippets/chunks/draw/styles/gradient/negative.md"
+=== "negative = False"
+    <div align="center">
+        <img
+            alt="GitHub logo in text"
+            src="../../assets/images/outputs/draw/styles/gradient/negative/github-gradient-normal.webp"
+        />
+    </div>
+
+=== "True"
+    <div align="center">
+        <img
+            alt="GitHub logo in text (negative)"
+            src="../../assets/images/outputs/draw/styles/gradient/negative/github-gradient-negative.webp"
+        />
+    </div>
 
 #### Matrices
 
-The `charset_array` attribute holds a NumPy [`ndarray`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html)
+The `charset_array` attribute holds a NumPy [`ndarray`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html){target=_blank}
 containing all the characters in the `charset`.
 
 ### Conversion
@@ -74,7 +153,7 @@ will be assigned to **one character** in the output text.
     giving the final `text_matrix`.
 
 <div align="center">
-    <img alt="Processing an image into a text matrix (gradient style)" src="/assets/images/diagrams/styles/gradient/processing.webp">
+    <img alt="Processing an image into a text matrix (gradient style)" src="../../assets/images/diagrams/styles/gradient/processing.webp">
 </div>
 
 ??? abstract "Source"

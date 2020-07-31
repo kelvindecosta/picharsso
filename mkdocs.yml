@@ -61,6 +61,7 @@ theme:
 
 markdown_extensions:
   - admonition
+  - attr_list
   - codehilite:
       guess_lang: false
   - def_list
@@ -71,7 +72,8 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.smartsymbols
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      check_paths: true
   - pymdownx.superfences
   - pymdownx.tabbed
   - toc:

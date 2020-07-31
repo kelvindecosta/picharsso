@@ -15,9 +15,22 @@ This example illustrates how to animate a GIF image in text art.
 ??? success "Result"
     Consider the following image:
 
-    --8<-- "docs/snippets/embed/subjects/nyan.html"
+
+    <div align="center">
+        <p>
+            <img alt="Nyan Cat" src="nyan.webp" />
+        </p>
+        <p>
+            <em>Nyan Cat</em>
+        </p>
+    </div>
 
     The output of the above script should look like this:
 
-    --8<-- "docs/snippets/embed/outputs/examples/02-gif/nyan-gradient.html"
-    
+
+    <div align="center">
+        <img
+            alt="Nyan Cat in text (gradient style)"
+            src="../../assets/images/outputs/examples/02-gif/nyan-gradient.webp"
+        />
+    </div>

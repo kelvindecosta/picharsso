@@ -1,4 +1,4 @@
-"""This module defines a formatter for [HTML](/formats/html)."""
+"""This module defines a formatter for [HTML](../../formats/html.md)."""
 
 from html.entities import name2codepoint
 
@@ -14,7 +14,7 @@ HTML_ENTITY_MAP[" "] = "nbsp;"
 
 class HtmlFormatter(BaseFormatter):
     """
-    A formatter for [HTML](/formats/html).
+    A formatter for [HTML](../../formats/html.md).
 
     Inherits [`BaseFormatter`][picharsso.format.base.BaseFormatter].
     """

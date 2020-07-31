@@ -1,7 +1,9 @@
 """
 This package defines formatters for different modes of text output.
 
---8<-- "docs/snippets/references/formats.md"
+!!! question "Formats"
+    Refer to the [Formats documentation](../../formats/index.md)
+    to learn about the supported output formats.
 """
 
 from .ansi import AnsiFormatter

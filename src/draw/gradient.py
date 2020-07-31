@@ -1,7 +1,26 @@
 """
-This module defines a drawer for [gradient style](/styles/gradient/).
+This module defines a drawer for the [gradient style](../../styles/gradient.md).
 
---8<-- "docs/snippets/chunks/draw/styles/gradient/example.md"
+??? example "Example"
+    Consider the following image:
+
+    <div align="center">
+        <p>
+            <img alt="Apple logo" src="../../assets/images/subjects/apple.webp" />
+        </p>
+        <p>
+            <em>Apple Computer [Rob Janoff, 1977]</em>
+        </p>
+    </div>
+
+    Here's what it should look like:
+
+    <div align="center">
+        <img
+            alt="Apple logo in text (gradient style)"
+            src="../../assets/images/outputs/demo/apple-gradient.webp"
+        />
+    </div>
 """
 
 import numpy as np
@@ -14,7 +33,7 @@ DEFAULT_CHARSET: str = " :!?PG@"
 
 class GradientDrawer(BaseDrawer):
     """
-    A drawer for [gradient style](/styles/gradient/).
+    A drawer for the [gradient style](../../styles/gradient.md).
 
     Inherits [`BaseDrawer`][picharsso.draw.base.BaseDrawer].
 

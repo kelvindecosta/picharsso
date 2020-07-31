@@ -1,7 +1,9 @@
 """
 This module defines an abstract base formatter.
 
---8<-- "docs/snippets/references/formats.md"
+!!! question "Formats"
+    Refer to the [Formats documentation](../../formats/index.md)
+    to learn about the supported output formats.
 """
 
 from abc import ABC, abstractmethod

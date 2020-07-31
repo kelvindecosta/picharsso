@@ -26,7 +26,14 @@ picharsso draw [options] <path> <command> [args]
     ??? example
         Consider the following image:
 
-        --8<-- "docs/snippets/embed/subjects/instagram.html"
+        <div align="center">
+            <p>
+                <img alt="Instagram logo" src="../../assets/images/subjects/instagram.webp" />
+            </p>
+            <p>
+                <em>Instagram</em>
+            </p>
+        </div>
 
         ```bash
         picharsso draw [-c] -H 32 docs/assets/images/subjects/instagram.webp gradient
@@ -34,12 +41,28 @@ picharsso draw [options] <path> <command> [args]
 
         Here's what it should look like:
 
-        --8<-- "docs/snippets/chunks/format/colorize.md"
+        === "colorize = False"
+            <div align="center">
+                <img
+                    alt="Instagram logo in text (without color)"
+                    src="../../assets/images/outputs/format/colorize/instagram-gray.webp"
+                />
+            </div>
+
+        === "True"
+            <div align="center">
+                <img
+                    alt="Instagram logo in text (with color)"
+                    src="../../assets/images/outputs/format/colorize/instagram-color.webp"
+                />
+            </div>
 
 ### `-m`, `--mode` [`ansi`|`html`]
 :   *Format mode for output text.  [default: ansi]*
 
-    --8<-- "docs/snippets/references/formats.md"
+    !!! question "Formats"
+        Refer to the [Formats documentation](../../formats/index.md)
+        to learn about the supported output formats.
 
 ### `-r`, `--resample` [`nearest`|`box`|`bilinear`|`hamming`|`bicubic`|`lanczos`]
 :   *Resampling filter.  [default: nearest]*
@@ -47,7 +70,14 @@ picharsso draw [options] <path> <command> [args]
     ??? example
         Consider the following image:
 
-        --8<-- "docs/snippets/embed/subjects/starry-night.html"
+        <div align="center">
+            <p>
+                <img alt="Starry Night" src="../../assets/images/subjects/starry-night.webp" />
+            </p>
+            <p>
+                <em>Starry Night [Vincent van Gogh, 1889]</em>
+            </p>
+        </div>
 
         ```bash
         picharsso draw -c -term-h -r <resample> docs/assets/images/subjects/starry-night.webp gradient -s "█"
@@ -55,7 +85,53 @@ picharsso draw [options] <path> <command> [args]
 
         Here's what it should look like:
 
-        --8<-- "docs/snippets/chunks/draw/resample.md"
+        === "resample = 'nearest'"
+            <div align="center">
+                <img
+                    alt="Starry Night (nearest resampling)"
+                    src="../../assets/images/outputs/draw/resample/starry-night-resample-nearest.webp"
+                />
+            </div>
+
+        === "'box'"
+            <div align="center">
+                <img
+                    alt="Starry Night (box resampling)"
+                    src="../../assets/images/outputs/draw/resample/starry-night-resample-box.webp"
+                />
+            </div>
+
+        === "'bilinear'"
+            <div align="center">
+                <img
+                    alt="Starry Night (bilinear resampling)"
+                    src="../../assets/images/outputs/draw/resample/starry-night-resample-bilinear.webp"
+                />
+            </div>
+
+        === "'hamming'"
+            <div align="center">
+                <img
+                    alt="Starry Night (hamming resampling)"
+                    src="../../assets/images/outputs/draw/resample/starry-night-resample-hamming.webp"
+                />
+            </div>
+
+        === "'bicubic'"
+            <div align="center">
+                <img
+                    alt="Starry Night (bicubic resampling)"
+                    src="../../assets/images/outputs/draw/resample/starry-night-resample-bicubic.webp"
+                />
+            </div>
+
+        === "'lanczos'"
+            <div align="center">
+                <img
+                    alt="Starry Night (lanczos resampling)"
+                    src="../../assets/images/outputs/draw/resample/starry-night-resample-lanczos.webp"
+                />
+            </div>
 
 ### `-H`, `--height` `INTEGER`
 :   *Height of output text in characters.*
@@ -67,15 +143,27 @@ picharsso draw [options] <path> <command> [args]
     ??? example
         Consider the following image:
         
-        --8<-- "docs/snippets/embed/subjects/zima.html"
-        
+        <div align="center">
+            <p>
+                <img alt="Zima Blue" src="../../assets/images/subjects/zima.webp" />
+            </p>
+            <p>
+                <em>Zima Blue [Zima]</em>
+            </p>
+        </div>
+
         ```bash
         picharsso draw -c -H 32 docs/assets/images/subjects/zima.webp gradient
         ```
 
         Here's what it should look like:
 
-        --8<-- "docs/snippets/embed/outputs/draw/dimensions/zima-h32.html"
+        <div align="center">
+            <img
+                alt="Zima Blue (with height = 32)"
+                src="../../assets/images/outputs/draw/dimensions/zima-h32.webp"
+            />
+        </div>
 
 ### `-W`, `--width` `INTEGER`
 :   *Width of output text in characters.*
@@ -87,7 +175,14 @@ picharsso draw [options] <path> <command> [args]
     ??? example
         Consider the following image:
         
-        --8<-- "docs/snippets/embed/subjects/zima.html"
+        <div align="center">
+            <p>
+                <img alt="Zima Blue" src="../../assets/images/subjects/zima.webp" />
+            </p>
+            <p>
+                <em>Zima Blue [Zima]</em>
+            </p>
+        </div>
 
         ```bash
         picharsso draw -c -W 32 docs/assets/images/subjects/zima.webp gradient
@@ -95,7 +190,12 @@ picharsso draw [options] <path> <command> [args]
 
         Here's what it should look like:
 
-        --8<-- "docs/snippets/embed/outputs/draw/dimensions/zima-w32.html"
+        <div align="center">
+            <img
+                alt="Zima Blue (with width = 32)"
+                src="../../assets/images/outputs/draw/dimensions/zima-w32.webp"
+            />
+        </div>
 
 ### `-term-h`, `--terminal-height`
 :   *Sets height to terminal height.*
@@ -103,7 +203,14 @@ picharsso draw [options] <path> <command> [args]
     ??? example
         Consider the following image:
         
-        --8<-- "docs/snippets/embed/subjects/zima.html"
+        <div align="center">
+            <p>
+                <img alt="Zima Blue" src="../../assets/images/subjects/zima.webp" />
+            </p>
+            <p>
+                <em>Zima Blue [Zima]</em>
+            </p>
+        </div>
 
         ```bash
         picharsso draw -c -term-h docs/assets/images/subjects/zima.webp gradient
@@ -111,10 +218,15 @@ picharsso draw [options] <path> <command> [args]
 
         Here's what it should look like:
 
-        --8<-- "docs/snippets/embed/outputs/draw/dimensions/zima-term-h.html"
+        <div align="center">
+            <img
+                alt="Zima Blue (with terminal height)"
+                src="../../assets/images/outputs/draw/dimensions/zima-term-h.webp"
+            />
+        </div>
 
     ??? bug
-        When used while [piping](https://en.wikipedia.org/wiki/Pipeline_(Unix)),
+        When used while [piping](https://en.wikipedia.org/wiki/Pipeline_(Unix)){target=_blank},
         `height` is set to the default terminal height,
         which is usually `24`.
       
@@ -124,7 +236,14 @@ picharsso draw [options] <path> <command> [args]
     ??? example
         Consider the following image:
         
-        --8<-- "docs/snippets/embed/subjects/zima.html"
+        <div align="center">
+            <p>
+                <img alt="Zima Blue" src="../../assets/images/subjects/zima.webp" />
+            </p>
+            <p>
+                <em>Zima Blue [Zima]</em>
+            </p>
+        </div>
 
         ```bash
         picharsso draw -c -term-w docs/assets/images/subjects/zima.webp gradient
@@ -132,10 +251,15 @@ picharsso draw [options] <path> <command> [args]
 
         Here's what it should look like:
 
-        --8<-- "docs/snippets/embed/outputs/draw/dimensions/zima-term-w.html"
+        <div align="center">
+            <img
+                alt="Zima Blue (with terminal width)"
+                src="../../assets/images/outputs/draw/dimensions/zima-term-w.webp"
+            />
+        </div>
 
     ??? bug
-        When used while [piping](https://en.wikipedia.org/wiki/Pipeline_(Unix)),
+        When used while [piping](https://en.wikipedia.org/wiki/Pipeline_(Unix)){target=_blank},
         `width` is set to the default terminal width,
         which is usually `80`.
 
@@ -149,11 +273,13 @@ picharsso draw [options] <path> <command> [args]
 
 ## Subcommands
 
---8<-- "docs/snippets/references/styles.md"
+!!! question "Styles"
+    Refer to the [Styles documentation](../../styles/index.md)
+    for an in-depth guide to the **image processing behind Picharsso**.
 
-### [`braille`](/commands/draw/braille/)
-:   Use the [Braille style](/styles/braille/).
+### [`braille`](braille.md)
+:   Use the [Braille style](../../styles/braille.md).
 
-### [`gradient`](/commands/draw/gradient/)
-:   Use the [gradient style](/styles/gradient/).
+### [`gradient`](gradient.md)
+:   Use the [gradient style](../../styles/gradient.md).
 

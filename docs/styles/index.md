@@ -27,21 +27,48 @@ with the `height` and `width` parameters.
 
 Consider the following image:
 
---8<-- "docs/snippets/embed/subjects/zima.html"
+<div align="center">
+    <p>
+        <img alt="Zima Blue" src="../assets/images/subjects/zima.webp" />
+    </p>
+    <p>
+        <em>Zima Blue [Zima]</em>
+    </p>
+</div>
 
 Here's what it should look like:
 
 === "height = 32"
-    --8<-- "docs/snippets/embed/outputs/draw/dimensions/zima-h32.html"
+    <div align="center">
+        <img
+            alt="Zima Blue (with height = 32)"
+            src="../assets/images/outputs/draw/dimensions/zima-h32.webp"
+        />
+    </div>
 
 === "terminal height"
-    --8<-- "docs/snippets/embed/outputs/draw/dimensions/zima-term-h.html"
+    <div align="center">
+        <img
+            alt="Zima Blue (with terminal height)"
+            src="../assets/images/outputs/draw/dimensions/zima-term-h.webp"
+        />
+    </div>
 
 === "width = 32"
-    --8<-- "docs/snippets/embed/outputs/draw/dimensions/zima-w32.html"
+    <div align="center">
+        <img
+            alt="Zima Blue (with width = 32)"
+            src="../assets/images/outputs/draw/dimensions/zima-w32.webp"
+        />
+    </div>
 
 === "terminal width"
-    --8<-- "docs/snippets/embed/outputs/draw/dimensions/zima-term-w.html"
+    <div align="center">
+        <img
+            alt="Zima Blue (with terminal width)"
+            src="../assets/images/outputs/draw/dimensions/zima-term-w.webp"
+        />
+    </div>
 
 !!! info "Preserving Aspect Ratio"
     The relationship between `height` and `width` preserves the aspect ratio of the input image.
@@ -59,23 +86,76 @@ before it can be used as input for an algorithm.
 During this resizing process, pixels must sampled/ resampled
 to generate the new, resized, image.
 
-Picharsso uses the [resampling filters that come with Pillow](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#filters).
+Picharsso uses the [resampling filters that come with Pillow](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#filters){target=_blank}.
 The choice of the resampling filter is defined by the `resample` parameter.
 
 Consider the following image:
 
---8<-- "docs/snippets/embed/subjects/starry-night.html"
+<div align="center">
+    <p>
+        <img alt="Starry Night" src="../assets/images/subjects/starry-night.webp" />
+    </p>
+    <p>
+        <em>Starry Night [Vincent van Gogh, 1889]</em>
+    </p>
+</div>
 
 Here's what it should look like:
 
---8<-- "docs/snippets/chunks/draw/resample.md"
+=== "resample = 'nearest'"
+    <div align="center">
+        <img
+            alt="Starry Night (nearest resampling)"
+            src="../assets/images/outputs/draw/resample/starry-night-resample-nearest.webp"
+        />
+    </div>
+
+=== "'box'"
+    <div align="center">
+        <img
+            alt="Starry Night (box resampling)"
+            src="../assets/images/outputs/draw/resample/starry-night-resample-box.webp"
+        />
+    </div>
+
+=== "'bilinear'"
+    <div align="center">
+        <img
+            alt="Starry Night (bilinear resampling)"
+            src="../assets/images/outputs/draw/resample/starry-night-resample-bilinear.webp"
+        />
+    </div>
+
+=== "'hamming'"
+    <div align="center">
+        <img
+            alt="Starry Night (hamming resampling)"
+            src="../assets/images/outputs/draw/resample/starry-night-resample-hamming.webp"
+        />
+    </div>
+
+=== "'bicubic'"
+    <div align="center">
+        <img
+            alt="Starry Night (bicubic resampling)"
+            src="../assets/images/outputs/draw/resample/starry-night-resample-bicubic.webp"
+        />
+    </div>
+
+=== "'lanczos'"
+    <div align="center">
+        <img
+            alt="Starry Night (lanczos resampling)"
+            src="../assets/images/outputs/draw/resample/starry-night-resample-lanczos.webp"
+        />
+    </div>
 
 !!! note
     All resizing operations use the same filter that is set by `resample`.
 
 ### Normalization
 
-Pillow supports multiple [image modes](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#modes).
+Pillow supports multiple [image modes](https://pillow.readthedocs.io/en/stable/handbook/concepts.html#modes){target=_blank}.
 For simplicity, the algorithms were designed to work on the `RGB` image mode.
 Hence, images must be converted appropriately.
 
@@ -95,7 +175,7 @@ Before the `image` can be processed, it must be resized appropriately.
 The **scale** of the resizing **depends on the processing algorithm**.
 
 <div align="center">
-    <img alt="Image resizing" src="/assets/images/diagrams/styles/overview/resizing.webp">
+    <img alt="Image resizing" src="../assets/images/diagrams/styles/overview/resizing.webp">
 </div>
 
 ??? abstract "Source"
@@ -107,7 +187,7 @@ The **scale** of the resizing **depends on the processing algorithm**.
 The resized `image` is processed into a `text_matrix`.
 
 <div align="center">
-    <img alt="Processing an image into a text matrix" src="/assets/images/diagrams/styles/overview/processing.webp">
+    <img alt="Processing an image into a text matrix" src="../assets/images/diagrams/styles/overview/processing.webp">
 </div>
 
 ??? abstract "Source"
@@ -123,10 +203,12 @@ The type of `formatter` used is defined by the `mode` parameter.
     The `formatter` requires the original `image` and the choice of `resample` filter
     for pooling colors.
     
-    Refer to the [colorization step](/formats/#colorization)
+    Refer to the [colorization step](../formats/index.md#colorization)
     for more information.
 
---8<-- "docs/snippets/references/formats.md"
+!!! question "Formats"
+    Refer to the [Formats documentation](../formats/index.md)
+    to learn about the supported output formats.
 
 ## Varieties
 
@@ -135,18 +217,35 @@ which inherits from the [`BaseDrawer`][picharsso.draw.base.BaseDrawer].
 
 Consider the following image:
 
---8<-- "docs/snippets/embed/subjects/apple.html"
+<div align="center">
+    <p>
+        <img alt="Apple logo" src="../assets/images/subjects/apple.webp" />
+    </p>
+    <p>
+        <em>Apple Computer [Rob Janoff, 1977]</em>
+    </p>
+</div>
 
 Here's what it should look like:
 
 ### Braille
-:   The [Braille style](/styles/braille/) is implemented using the
+:   The [Braille style](braille.md) is implemented using the
     [`BrailleDrawer`][picharsso.draw.braille.BrailleDrawer].
 
-    --8<-- "docs/snippets/embed/outputs/demo/apple-braille.html"
+    <div align="center">
+        <img
+            alt="Apple logo in text (Braille style)"
+            src="../assets/images/outputs/demo/apple-braille.webp"
+        />
+    </div>
 
 ### Gradient
-:   The [gradient style](/styles/gradient/) is implemented using the
+:   The [gradient style](gradient.md) is implemented using the
     [`GradientDrawer`][picharsso.draw.gradient.GradientDrawer].
 
-    --8<-- "docs/snippets/embed/outputs/demo/apple-gradient.html"
+    <div align="center">
+        <img
+            alt="Apple logo in text (gradient style)"
+            src="../assets/images/outputs/demo/apple-gradient.webp"
+        />
+    </div>

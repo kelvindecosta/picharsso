@@ -2,10 +2,11 @@
 
 <div align="center">
     <p>
-        <img alt="Picharsso" src="/assets/images/logo.webp">
+        <img alt="Picharsso" src="assets/images/logo.webp">
     </p>
-
-    <em>A utility for converting images to text art.</em>
+    <p>
+        <em>A utility for converting images to text art.</em>
+    </p>
 </div>
 
 ## Installation
@@ -18,7 +19,7 @@ pip install picharsso
 
 This will:
 
-* download and install the [`picharsso` Python package](https://pypi.org/project/picharsso/)
+* download and install the [`picharsso` Python package](https://pypi.org/project/picharsso/){target=_blank}
   (along with its dependencies).
 * create an executable, `picharsso`, for the CLI (command line interface).
 
@@ -46,7 +47,14 @@ Picharsso ships with a CLI that provides some basic functionality from the termi
 
 Consider the following image:
 
---8<-- "docs/snippets/embed/subjects/apple.html"
+<div align="center">
+    <p>
+        <img alt="Apple logo" src="assets/images/subjects/apple.webp" />
+    </p>
+    <p>
+        <em>Apple Computer [Rob Janoff, 1977]</em>
+    </p>
+</div>
 
 To convert an image to text art, run:
 
@@ -57,14 +65,19 @@ To convert an image to text art, run:
 
     Here's what it should look like:
 
-    --8<-- "docs/snippets/embed/outputs/demo/apple-braille.html"
+    <div align="center">
+        <img
+            alt="Apple logo in text (Braille style)"
+            src="assets/images/outputs/demo/apple-braille.webp"
+        />
+    </div>
 
     !!! abstract "Breakdown"
         | Argument  | Effect                                                   |
         | :-------: | :------------------------------------------------------- |
         |   `-c`    | Apply **image colors** to the output text.               |
         |  `-H 32`  | Sets the **number of lines** of the output text to `32`. |
-        | `braille` | Use the [Braille style](/styles/braille/).               |
+        | `braille` | Use the [Braille style](styles/braille.md).              |
 
 === "Gradient"
     ```bash
@@ -73,19 +86,26 @@ To convert an image to text art, run:
 
     Here's what it should look like:
 
-    --8<-- "docs/snippets/embed/outputs/demo/apple-gradient.html"
+    <div align="center">
+        <img
+            alt="Apple logo in text (gradient style)"
+            src="assets/images/outputs/demo/apple-gradient.webp"
+        />
+    </div>
 
     !!! abstract "Breakdown"
         |  Argument  | Effect                                                   |
         | :--------: | :------------------------------------------------------- |
         |    `-c`    | Apply **image colors** to the output text.               |
         |  `-H 32`   | Sets the **number of lines** of the output text to `32`. |
-        | `gradient` | Use the [gradient style](/styles/gradient/).             |
+        | `gradient` | Use the [gradient style](styles/gradient.md).            |
 
 !!! warning
     Don't forget to replace `<path/to/image>`.
 
---8<-- "docs/snippets/references/cli.md"
+!!! question "CLI"
+    Refer to the [CLI documentation](commands/index.md)
+    to learn about the various **commands** and **arguments**.
 
 ## Library (API)
 
@@ -124,14 +144,23 @@ The example from the previous section can be implemented in just a few lines of 
     ```
 
 !!! info "Pillow"
-    Picharsso integrates well with [Pillow](https://python-pillow.org/),
+    Picharsso integrates well with [Pillow](https://python-pillow.org/){target=_blank},
     the friendly PIL fork.
 
---8<-- "docs/snippets/references/styles.md"
+!!! question "Styles"
+    Refer to the [Styles documentation](styles/index.md)
+    for an in-depth guide to the **image processing behind Picharsso**.
 
 Now consider this animated GIF:
 
---8<-- "docs/snippets/embed/subjects/nyan.html"
+<div align="center">
+    <p>
+        <img alt="Nyan Cat" src="examples/02-gif/nyan.webp" />
+    </p>
+    <p>
+        <em>Nyan Cat</em>
+    </p>
+</div>
 
 With some more lines of code, you can animate GIFs in text!
 
@@ -182,7 +211,12 @@ With some more lines of code, you can animate GIFs in text!
 
     Here's what it should look like:
 
-    --8<-- "docs/snippets/embed/outputs/examples/02-gif/nyan-braille.html"
+    <div align="center">
+        <img
+            alt="Nyan Cat in text (Braille style)"
+            src="assets/images/outputs/examples/02-gif/nyan-braille.webp"
+        />
+    </div>
 
 === "Gradient"
     ```python linenums="1" hl_lines="15-16 24-25"
@@ -231,8 +265,19 @@ With some more lines of code, you can animate GIFs in text!
 
     Here's what it should look like:
 
-    --8<-- "docs/snippets/embed/outputs/examples/02-gif/nyan-gradient.html"
+    <div align="center">
+        <img
+            alt="Nyan Cat in text (gradient style)"
+            src="assets/images/outputs/examples/02-gif/nyan-gradient.webp"
+        />
+    </div>
 
---8<-- "docs/snippets/references/api.md"
+!!! question "API"
+    Refer to the [API documentation](library/draw/index.md)
+    to learn about the various **classes** and **functions**.
 
---8<-- "docs/snippets/references/examples.md"
+!!! tip "Examples"
+    Check out some more [examples](examples/01-image/index.md).
+
+    You can use an image [directly from the web](examples/03-web/index.md) too!
+    
