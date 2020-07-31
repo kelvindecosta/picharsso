@@ -1,7 +1,7 @@
 site_name: Picharsso
 site_description: "A utility for converting images to text art."
 site_author: "Kelvin DeCosta"
-site_url: https://kelvindecosta.github.io/picharsso
+site_url: https://kelvindecosta.github.io/picharsso/
 
 repo_name: kelvindecosta/picharsso
 repo_url: https://github.com/kelvindecosta/picharsso
@@ -113,7 +113,7 @@ extra:
     - icon: fontawesome/solid/envelope
       link: https://mailhide.io/e/c1R8e
       name: "Mail"
-  site_image: assets/images/logo.webp
+  site_image: assets/images/logo.png
 
 extra_css:
   - assets/css/mkdocstrings.css
