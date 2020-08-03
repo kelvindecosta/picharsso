@@ -1,0 +1,22 @@
+{#-
+    This file was automatically generated - do not edit
+  -#}
+  {% extends "base.html" %}
+  {% block extrahead %}
+    {% set image = config.site_url ~ config.extra.site_image %}
+    <meta name="keywords" content="Text Art, Image Processing, ASCII Art, Figlet">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ config.site_description }}">
+    <meta property="og:url" content="{{ page.canonical_url }}">
+    <meta property="og:image" content="{{ image }}">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="160">
+    <meta property="og:image:height" content="160">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@_kelvindecosta">
+    <meta name="twitter:creator" content="@_kelvindecosta">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ config.site_description }}">
+    <meta name="twitter:image" content="{{ image }}">
+  {% endblock %}
