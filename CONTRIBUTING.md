@@ -56,7 +56,7 @@ describing what you intend to work on.
 Any changes to the code base should
 follow the style and coding conventions used in the rest of the project.
 The version history should be clean,
-and commit messages should be descriptive and [properlyformatted][commit-messages].
+and commit messages should be descriptive and [properly formatted][commit-messages].
 
 [issue]: https://github.com/kelvindecosta/picharsso/issues/new
 [issues]: https://github.com/kelvindecosta/picharsso/issues
